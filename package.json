@@ -1,0 +1,20 @@
+{
+  "name": "clima-back",
+  "version": "1.0.0",
+  "description": "Back para app de Clima desarrollada por Challenge de TECO",
+  "main": "src/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "clima",
+    "js",
+    "app",
+    "teco"
+  ],
+  "author": "Joaquin (Pato)",
+  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
