@@ -1,25 +1,23 @@
 import * as bodyParser from "body-parser";
-import * as cors from "cors";
-import * as express from 'express';
+import {Request, Response} from "express";
 
-import {AppRoutes} from "./routes.ts";
 
+const cors = require("cors");
+const express = require("express");
 const port = 3030;
-const app = express;
+const app = express();
 
-// Se Registran todas las Rutas
-AppRoutes.forEach(route => {
-  app[route.method](route.path, (request, response, next) => {
-    route.action(request, response)
-      .then(() => next)
-      .catch(err => next(err));
-  });
-});
+app.use(cors())
+app.use(bodyParser.json());
+
+
 
 app.get('/', (request, response) => {
   response.send('¡Creado por Joaquin (Pato) Decima!');
 });
 
-app.listen(port, () => {
-  console.log('Ejecutado en el puerto ${port}')
+const server = app.listen(port, () => {
+  console.log('Ejecutado en el puerto '.concat(port.toString()))
 });
+
+module.exports = server;
