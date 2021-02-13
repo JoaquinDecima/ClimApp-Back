@@ -9,16 +9,14 @@ describe('Test Server',function() {
   sv = server
 })
 
+// Verifico que la API Inicie OK
 test("Prueba API ON",() => {
   req.get('/').expect(200);
 });
 
-//req.get('/').expect(200, function(err){
-//  console.log(err);
-//});
-
-//request(server).get("/").expect(200).end(function(err, res) {
-//  if (err) throw err;
-//});
+//Verifico que V1 Este ON
+test("Prueba API ON",() => {
+  req.get('/v1/').expect(200);
+});
 
 sv.close();

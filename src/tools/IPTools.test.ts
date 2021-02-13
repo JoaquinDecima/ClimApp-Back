@@ -7,10 +7,12 @@ const responseBSAS:Request = {
   }
 } as Request;
 
+// Envio un Request MOCK y espero obtener la IP Implantada
 test("Prueba GetIP",() => {
   expect(IPTools.getIP(responseBSAS)).toBe("186.111.141.96");
 });
 
+// Utilizando el Mismo MOCK espero obtener la Ubicacion (BsAs)
 test("Prueba GetGEO",() => {
   IPTools.getGeoData(responseBSAS)
     .then(function(value) {
