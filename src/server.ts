@@ -7,6 +7,7 @@ const express = require("express");
 const port = 3030;
 const app = express();
 
+// Config APP express
 app.use(cors())
 app.use(bodyParser.json());
 app.set('trust proxy', true);
@@ -28,7 +29,6 @@ app.get('/v1/location/', (request, response) => {
       }, function(reason) {
         response.status(500).json({"error":reason}); // Error!
       });
-
 });
 
 // Se inician servicio de API
