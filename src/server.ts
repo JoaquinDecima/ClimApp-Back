@@ -14,6 +14,8 @@ app.set('trust proxy', true);
 // ATTENCION: Solo funciona con IP Publica localhost da null
 app.get('/', (request, response) => {
   var ip = IPTools.getIP(request);
+  IPTools.getGeoData(request)
+    .then(res => console.log(res))
   response.send('¡Creado por Joaquin (Pato) Decima!'.concat(ip.toString()));
 });
 
