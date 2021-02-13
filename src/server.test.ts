@@ -1,12 +1,12 @@
-import * as app from "./server";
+import { server } from "./server";
 
 const request = require('supertest');
 const req = request('http://localhost:3030');
-var server
+var sv
 
 
 describe('Test Server',function() {
-  server = app
+  sv = server
 })
 
 test("Prueba API ON",() => {
@@ -21,4 +21,4 @@ test("Prueba API ON",() => {
 //  if (err) throw err;
 //});
 
-//app.close();
+sv.close();
