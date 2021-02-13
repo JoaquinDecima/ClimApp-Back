@@ -19,9 +19,9 @@ app.get('/v1/', (request, response) => {
 });
 
 // ATTENCION: En caso de no tener IP Publica (Pruebas en localhost) Retorna Undefine
-// Retorna la Ciudad desde donde se consulta 
+// Retorna la Ciudad desde donde se consulta
 app.get('/v1/location/', (request, response) => {
-
+  console.log(request)
   IPTools.getGeoData(request)
     .then(function(value) {
       response.send('¡Creado por Joaquin (Pato) Decima! Conectado desde:'.concat(value.city));
@@ -29,11 +29,9 @@ app.get('/v1/location/', (request, response) => {
         response.send(reason); // Error!
       });
 
-
 });
 
-const server = app.listen(port, () => {
+// Se inician servicio de API
+export const server = app.listen(port, () => {
   console.log(('Ejecutado en http://localhost:'.concat(port.toString())).concat('/v1/'))
 });
-
-module.exports = server;
