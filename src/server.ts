@@ -24,9 +24,9 @@ app.get('/v1/location/', (request, response) => {
   console.log(request)
   IPTools.getGeoData(request)
     .then(function(value) {
-      response.send('¡Creado por Joaquin (Pato) Decima! Conectado desde:'.concat(value.city));
+      response.json({"city":value.city});
       }, function(reason) {
-        response.send(reason); // Error!
+        response.status(500).json({"error":reason}); // Error!
       });
 
 });
