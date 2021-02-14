@@ -19,3 +19,13 @@ Se requiere realizar tests con las librerías antes mencionadas o con equival
 * **/current[/city]** City es un parámetro opcional. Devuelve los datos de ubicación city o la ubicación actual según
 ip-api y el estado del tiempo actual.
 * **/forecast[/city]** City es un parámetro opcional. Devuelve los datos de ubicación city o la ubicación actual según ip-api y el estado del tiempo a 5 días
+
+## Adicionales
+
+Adicionalmente a los recursos sugeridos hacemos uso de recursos adicionales para simplificar o mejorar el servicio, a continuación detallamos estos recursos.
+
+#### Datos.gob.ar
+
+Uno de los conflictos que me encontré es, ¿Cómo convertir una Ciudad en coordenadas? Existen muchas formas, pero una de las menos complejas (para Argentina) es la opción de normalización de nombres de las provincias de Argentina. Además de normalizar otorga las coordenadas de dichas provincias.
+
+https://datosgobar.github.io/georef-ar-api/etl-data/
