@@ -10,9 +10,9 @@ export module IPTools{
     return(ip.replace(/^.*:/, ''));
   }
 
-  export async function getGeoData(req:Request) {
+  export function getGeoData(req:Request) {
     var ip = this.getIP(req);
-    var city = await IPAPI.get(ip.toString());
+    var city = IPAPI.get(ip.toString());
     return(city);
   }
 
