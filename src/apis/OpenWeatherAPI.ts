@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const server = 'api.openweathermap.org/data/2.5/';
+const server = 'https://api.openweathermap.org/data/2.5/';
 const key = '8564d152e5793c5a7fe47abde047276d'
 
 export const OWAPI = {
