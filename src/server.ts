@@ -1,6 +1,7 @@
 import * as bodyParser from "body-parser";
 import {Request, Response} from "express";
 import { IPTools } from "./tools/IPTools";
+import { OWTools } from "./tools/OWTools";
 
 const cors = require("cors");
 const express = require("express");
@@ -22,13 +23,37 @@ app.get('/v1/', (request, response) => {
 // ATTENCION: En caso de no tener IP Publica (Pruebas en localhost) Retorna Undefine
 // Retorna la Ciudad desde donde se consulta
 app.get('/v1/location/', (request, response) => {
-  console.log(request)
   IPTools.getGeoData(request)
     .then(function(value) {
       response.json({"city":value.city});
       }, function(reason) {
         response.status(500).json({"error":reason}); // Error!
       });
+});
+
+app.get('/v1/current/', async (request,response) => {
+  var city = await IPTools.getGeoData(request)
+    .then(function(value) {
+      return value.city;
+    }, function(reason) {
+      response.status(500).json({"error":reason}); // Error!
+    });
+  console.log(city);
+  OWTools.current(city)
+    .then(function(value) {
+      response.json(value);
+    }, function(reason) {
+      response.status(500).json({"error":reason}); // Error!
+    });
+});
+
+app.get('/v1/current/:city', (request,response) => {
+  OWTools.current(request.params.city)
+    .then(function(value) {
+      response.json(value);
+    }, function(reason) {
+      response.status(500).json({"error":reason}); // Error!
+    });
 });
 
 // Se inician servicio de API
