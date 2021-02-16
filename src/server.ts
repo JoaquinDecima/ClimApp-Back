@@ -56,6 +56,24 @@ app.get('/v1/current/:city', (request,response) => {
     });
 });
 
+app.get('/v1/forecast/', async (request,response) => {
+  var coord = await IPTools.getGeoData(request)
+    .then(function(value) {
+      return {
+        "lat":value.lat,
+        "lon":value.lon,
+      };
+    }, function(reason) {
+      response.status(500).json({"error":reason}); // Error!
+    });
+  OWTools.nextdays(coord)
+    .then(function(value) {
+      response.json(value);
+    }, function(reason) {
+      response.status(500).json({"error":reason}); // Error!
+    });
+});
+
 // Se inician servicio de API
 export const server = app.listen(port, () => {
   console.log(('Ejecutado en http://localhost:'.concat(port.toString())).concat('/v1/'))
