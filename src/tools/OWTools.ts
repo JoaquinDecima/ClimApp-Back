@@ -10,7 +10,7 @@ export module OWTools{
   export function nextdays(coord) {
     var ret = OWAPI.nextdays(coord.lat,coord.lon)
       .then(function(value) {
-        return(value.daily.slice(1,5));
+        return(value.daily.slice(1,6));
       }, function(reason) {
         console.log(reason);
          // Error!
