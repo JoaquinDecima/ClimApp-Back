@@ -1,5 +1,6 @@
 import * as bodyParser from "body-parser";
 import {Request, Response} from "express";
+import { GEOTools } from "./tools/GEOTools";
 import { IPTools } from "./tools/IPTools";
 import { OWTools } from "./tools/OWTools";
 
@@ -63,6 +64,21 @@ app.get('/v1/forecast/', async (request,response) => {
         "lat":value.lat,
         "lon":value.lon,
       };
+    }, function(reason) {
+      response.status(500).json({"error":reason}); // Error!
+    });
+  OWTools.nextdays(coord)
+    .then(function(value) {
+      response.json(value);
+    }, function(reason) {
+      response.status(500).json({"error":reason}); // Error!
+    });
+});
+
+app.get('/v1/forecast/:city', async (request,response) => {
+  var coord = await GEOTools.getCoordenadas(request.params.city)
+    .then(function(value) {
+      return value;
     }, function(reason) {
       response.status(500).json({"error":reason}); // Error!
     });
