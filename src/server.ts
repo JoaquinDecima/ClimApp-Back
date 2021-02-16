@@ -6,7 +6,7 @@ import { OWTools } from "./tools/OWTools";
 
 const cors = require("cors");
 const express = require("express");
-const port = 3030;
+const port = process.env.PORT || 3030;
 const app = express();
 
 // Config APP express
