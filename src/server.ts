@@ -13,8 +13,8 @@ const app = express();
 var corsOptions = {
   origin: ['https://joaquindecima.github.io', 'http://localhost:3000'],
   optionsSuccessStatus: 200
-}
-app.use(cors(corsOptions))
+};
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.set('trust proxy', true);
 
@@ -30,7 +30,7 @@ app.get('/v1/', (request, response) => {
 app.get('/v1/location/', (request, response) => {
   IPTools.getGeoData(request)
     .then(function(value) {
-      response.json({"city":value.city});
+        response.json({"city":value.city});
       }, function(reason) {
         response.status(500).json({"error":reason}); // Error!
       });
@@ -53,6 +53,7 @@ app.get('/v1/current/', async (request,response) => {
 });
 
 app.get('/v1/current/:city', (request,response) => {
+  console.log("SERVER:", '/v1/current/:city', request.params.city)
   OWTools.current(request.params.city)
     .then(function(value) {
       response.json(value);
@@ -71,6 +72,7 @@ app.get('/v1/forecast/', async (request,response) => {
     }, function(reason) {
       response.status(500).json({"error":reason}); // Error!
     });
+  console.log("SERVER:", '/v1/forecast', coord)
   OWTools.nextdays(coord)
     .then(function(value) {
       response.json(value);
@@ -80,12 +82,14 @@ app.get('/v1/forecast/', async (request,response) => {
 });
 
 app.get('/v1/forecast/:city', async (request,response) => {
+  console.log("SERVER:", '/v1/forecast/:city', request.params.city)
   var coord = await GEOTools.getCoordenadas(request.params.city)
     .then(function(value) {
       return value;
     }, function(reason) {
       response.status(500).json({"error":reason}); // Error!
     });
+  console.log("SERVER:", '/v1/forecast/:city', coord)
   OWTools.nextdays(coord)
     .then(function(value) {
       response.json(value);

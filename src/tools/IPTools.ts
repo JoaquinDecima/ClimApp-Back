@@ -7,12 +7,14 @@ export module IPTools{
   // ATTENCION: Solo funciona con IP Publica localhost da null
   export function getIP(req:Request) {
     var ip = req.connection.remoteAddress;
+    console.log("IPTools", ip);
     return(ip.replace(/^.*:/, ''));
   }
 
   export function getGeoData(req:Request) {
     var ip = this.getIP(req);
     var city = IPAPI.get(ip.toString());
+    console.log("IPTools", city);
     return(city);
   }
 
