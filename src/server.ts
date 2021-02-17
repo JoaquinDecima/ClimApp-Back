@@ -10,7 +10,11 @@ const port = process.env.PORT || 3030;
 const app = express();
 
 // Config APP express
-app.use(cors())
+var corsOptions = {
+  origin: ['https://joaquindecima.github.io', 'http://localhost:3000'],
+  optionsSuccessStatus: 200
+}
+app.use(cors(corsOptions))
 app.use(bodyParser.json());
 app.set('trust proxy', true);
 
