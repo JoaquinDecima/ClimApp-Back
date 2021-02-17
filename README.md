@@ -29,9 +29,3 @@ Adicionalmente a los recursos sugeridos hacemos uso de recursos adicionales para
 Uno de los conflictos que me encontré es, ¿Cómo convertir una Ciudad en coordenadas? Existen muchas formas, pero una de las menos complejas (para Argentina) es la opción de normalización de nombres de las provincias de Argentina. Además de normalizar otorga las coordenadas de dichas provincias.
 
 https://datosgobar.github.io/georef-ar-api/etl-data/
-
-## Servidor de Pruebas
-
-Como método más cómodo para poder apreciar el trabajo final se decidió publicar el proyecto en servicios gratuitos que permitan mostrar el trabajo realizado como un producto final. En este caso podemos encontrar el Back en la siguiente URL
-
-https://climappjdecima.herokuapp.com/v1/
