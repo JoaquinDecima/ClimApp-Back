@@ -1,4 +1,3 @@
-import * as bodyParser from 'body-parser';
 import express from 'express';
 import cors from 'cors';
 import {GEOTools} from './tools/GEOTools';
@@ -14,7 +13,7 @@ const corsOptions = {
 
 // Config APP express
 app.use(cors(corsOptions));
-app.use(bodyParser.json());
+app.use(express.json());
 app.set('trust proxy', true);
 
 // ATTENCION: Solo funciona con IP Publica localhost da null la IP
