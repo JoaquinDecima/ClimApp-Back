@@ -1,7 +1,8 @@
 import axios from 'axios';
+import 'dotenv/config';
 
 const server = 'https://api.openweathermap.org/data/2.5/';
-const key = '8564d152e5793c5a7fe47abde047276d';
+const key = process.env.OW_KEY;
 
 export async function currentapi(city) {
 	const resposne = await axios.get(`${server}weather?q=${city}&appid=${key}&units=metric&lang=es`);
