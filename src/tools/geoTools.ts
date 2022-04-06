@@ -1,4 +1,4 @@
-import {DARAPI} from '../apis/DatosARAPI';
+import {DARAPI} from '../apis/datosARAPI';
 import {logger} from './logger';
 
 export async function getCoordenadas(city) {

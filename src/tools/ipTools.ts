@@ -1,5 +1,5 @@
 import {Request} from 'express';
-import {IPAPI} from '../apis/IPAPI';
+import {IpAPI} from '../apis/ipAPI';
 import {logger} from './logger';
 
 // Obtengo IP de Request
@@ -12,7 +12,7 @@ export function getIP(req:Request) {
 
 export async function getGeoData(req:Request) {
 	const ip = getIP(req);
-	const city = await IPAPI.get(ip.toString());
+	const city = await IpAPI.get(ip.toString());
 	if (city.status === 'fail'){
 		logger.error(`IPTools - ${city.message}`);
 		throw new Error(city.message);
