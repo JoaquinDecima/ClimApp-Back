@@ -1,9 +1,10 @@
-import express from 'express';
+import compression from 'compression';
 import cors from 'cors';
-import {getIP} from './tools/ipTools';
-import locationRouter from './routes/locationRouter';
-import forecastRouter from './routes/forecastRouter';
+import express from 'express';
 import currentRouter from './routes/currentRouter';
+import forecastRouter from './routes/forecastRouter';
+import locationRouter from './routes/locationRouter';
+import {getIP} from './tools/ipTools';
 
 const port = process.env.PORT || 3030;
 const app = express();
@@ -13,6 +14,7 @@ const corsOptions = {
 };
 
 // Config APP express
+app.use(compression());
 app.use(cors(corsOptions));
 app.use(express.json());
 app.set('trust proxy', true);
@@ -24,10 +26,10 @@ app.use('/api/current/', currentRouter);
 // Solo retorna 200 si esta funcionando el servicio
 app.get('/api/', (request, response) => {
 	const ip = getIP(request);
-	response.send('¡Creado por Joaquin (Pato) Decima! Conectado desde la IP:'.concat(ip.toString()));
+	response.send(`¡Creado por Joaquin (Pato) Decima! Conectado desde la IP:${ip}`);
 });
 
 // Se inician servicio de API
 export const server = app.listen(port, () => {
-	console.log(('Ejecutado en http://localhost:'.concat(port.toString())).concat('/v1/'));
+	console.log(`Ejecutado en http://localhost:${port}/api/`);
 });
