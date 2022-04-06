@@ -1,21 +1,21 @@
-import {Request} from "express";
-import { IPAPI } from "./../apis/IPAPI";
+import {Request} from 'express';
+import {IPAPI} from '../apis/IPAPI';
 
-export module IPTools{
+export namespace IPTools{
 
   // Obtengo IP de Request
   // ATTENCION: Solo funciona con IP Publica localhost da null
   export function getIP(req:Request) {
-    var ip = req.connection.remoteAddress;
-    console.log("IPTools", ip);
-    return(ip.replace(/^.*:/, ''));
+  	const ip = req.connection.remoteAddress;
+  	console.log('IPTools', ip);
+  	return(ip.replace(/^.*:/, ''));
   }
 
   export function getGeoData(req:Request) {
-    var ip = this.getIP(req);
-    var city = IPAPI.get(ip.toString());
-    console.log("IPTools", city);
-    return(city);
+  	const ip = this.getIP(req);
+  	const city = IPAPI.get(ip.toString());
+  	console.log('IPTools', city);
+  	return(city);
   }
 
 }
