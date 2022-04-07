@@ -9,7 +9,7 @@ import {getIP} from './tools/ipTools';
 const port = process.env.PORT || 3030;
 const app = express();
 const corsOptions = {
-	origin: ['https://joaquindecima.github.io', 'http://localhost:3000'],
+	origin: ['https://joaquindecima.github.io', 'http://localhost:3000', 'https://climapp.joaquindecima.ml'],
 	optionsSuccessStatus: 200
 };
 
